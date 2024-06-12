@@ -1,0 +1,31 @@
+pipeline{
+    agent any
+    stages{
+        stage("build"){
+            steps{
+                echo "branch name ${BRANCH_NAME}"
+            }
+        }
+        stage("test"){
+            steps{
+                echo "test phase"
+            }
+        }
+        stage("deploy"){
+            steps{
+                echo "deploy test"
+            }
+        }
+    }
+    post{
+        always{
+            echo "====++++always++++===="
+        }
+        success{
+            echo "====++++only when successful++++===="
+        }
+        failure{
+            echo "====++++only when failed++++===="
+        }
+    }
+}
